@@ -50,6 +50,16 @@ class Meal {
   deliveries(){
   }//deliveries
   byPrice(){
-    return store.meals.
+    // return store.meals.p
   }
 }//end class
+
+let deliveryId = 0;
+class Delivery {
+  constructor(){
+    // this.mealId = meal.id;
+    // this.customerId = customer.id;
+    this.id = ++deliveryId;
+    store.deliveries.push(this);
+  }
+}
