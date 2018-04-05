@@ -28,7 +28,7 @@ class Customer {
   }
 
   meals(){
-    return store.meals.filter(meal => meal.customerId === this.id);
+    return this.deliveries().map(delivery => delivery.mealId).map(mealId => store.meals.find(meal => meal.id === mealId))
   }
 
   totalSpent(){
