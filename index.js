@@ -58,9 +58,29 @@ class Employer {
     }, []);
   }
 
+  mealFather(){return this.deliveries().map(delivery => delivery.meal())}
+
   meals(){
-    return [...new Set(this.deliveries().map(delivery => delivery.meal()))]
+    // return [...new Set(this.deliveries().map(delivery => delivery.meal()))]
+    return [...new Set(this.mealFather())]
   }
+
+  mealTotals(){
+    let obj = {}
+    let meals = this.mealFather();
+    this.meals().forEach( function(meal){
+      // if(obj[meal.id])
+      let count =0;
+      // debugger;
+      // this.deliveries().forEach({function(delivery){ if (delivery.meal()==meal){ count++}     }}) /////////////////////////
+      meals.forEach(function(newMeal){ if (newMeal==meal){ count++}     }) /////////////////////////
+      obj[meal.id]=count;
+    })
+    // debugger;
+    return obj
+  }//mealTotals
+
+
 }
 
 
