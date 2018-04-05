@@ -16,9 +16,9 @@ let customerId = 0;
 
 
 class Customer {
-  constructor(name){
+  constructor(name, employer){
     this.name = name;
-    // this.employerId = employer.id;
+    if (employer) {this.employerId = employer.id;}
     this.id = ++customerId;
     store.customers.push(this);
   }
@@ -43,6 +43,14 @@ class Employer {
     this.name = name;
     this.id = ++employerId;
     store.employers.push(this);
+  }
+
+  employees(){
+    return store.customers.filter(customer => customer.employerId === this.id);
+  }
+
+  deliveries(){
+    // return store.deliveries.filter(delivery => delivery.customerId === this.id);
   }
 }
 
