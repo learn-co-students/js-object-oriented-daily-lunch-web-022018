@@ -2,6 +2,19 @@ let store = {customers: [], meals: [], deliveries: [], employers: []}
 
 let customerId = 0;
 
+
+// Customer class:
+//
+// new Customer() — initialized with both name,
+//   and an instance of an employer;
+//   returns a JavaScript object that has attributes of id, employerId, and name
+// meals() - returns all of the meals that a customer has had delivered
+// deliveries() — returns all of the deliveries that customer has received
+// totalSpent() - returns the total amount that the customer has spent,
+  // as a function of the cost of the meals he has had delivered
+
+
+
 class Customer {
   constructor(name){
     this.name = name;
