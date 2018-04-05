@@ -32,7 +32,9 @@ class Customer {
   }
 
   totalSpent(){
-    return this.meals().reduce(meal => meal.price);
+    // return this.meals().reduce(meal => meal.price);
+    let currentTotal=0
+    return this.meals().reduce(function(currentTotal,meal) {return currentTotal + meal.price},currentTotal);
   }
 }
 
