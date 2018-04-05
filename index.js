@@ -65,8 +65,13 @@ class Meal {
     this.id = ++mealid
     store.meals.push(this)
   }//end constructor
-  deliveries(){
+  deliveries(){// deliveries() - returns all of the deliveries that delivered the particular meal.
+    return store.deliveries.filter((delivery)=>{ return delivery.mealId==this.id })
   }//deliveries
+  customers(){
+    // return this.deliveries().map(delivery => delivery.mealId).map(mealId => store.meals.find(meal => meal.id === mealId))
+    return this.deliveries().map(delivery=>delivery.customerId).map(customerId => store.customers.find(customer=>customer.id==customerId))
+  }//customers
   static byPrice(){
     return store.meals.sort( function(a,b){
       if (a.price > b.price) {
