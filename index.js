@@ -52,7 +52,14 @@ class Employer {
   }
 
   deliveries(){
-    // return store.deliveries.filter(delivery => delivery.customerId === this.id);
+    let x = this.employees().map(employee => employee.deliveries());
+    return x.reduce(function(accumulator, currentValue){
+      return [...accumulator, ...currentValue];
+    }, []);
+  }
+
+  meals(){
+    return [...new Set(this.deliveries().map(delivery => delivery.meal()))]
   }
 }
 
