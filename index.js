@@ -63,12 +63,23 @@ class Meal {
   }
 }//end class
 
+
+// Delivery class:
+
+// new Delivery() — initialized with meal and customer;
+// returns an object that has attributes of mealId, customerId, and id
+// meal() - returns the meal associated with the delivery
+// customer() - returns the customer associated with the delivery
+
 let deliveryId = 0;
 class Delivery {
-  constructor(){
-    // this.mealId = meal.id;
-    // this.customerId = customer.id;
+  constructor(meal,customer){
+    if(meal){    this.mealId = meal.id;}
+    if(customer){    this.customerId = customer.id;}
+
     this.id = ++deliveryId;
     store.deliveries.push(this);
   }
-}
+  meal(){return store.meals.find( meal => meal.id== this.mealId )}//delivery.meal
+  customer(){return store.customers.find( customer => customer.id== this.customerId )}//delivery.meal
+}//delivery
