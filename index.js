@@ -36,7 +36,8 @@ class Employer {
   // returns an object that has attributes oftitle, price, and id
 // deliveries() - returns all of the deliveries that delivered the particular meal.
 // customers() - returns all of the customers who have had the meal delivered.
-// byPrice() - A class method that orders the meals by their price. Use the static keyword to write a class method.
+// byPrice() - A class method that orders the meals by their price.
+  // Use the static keyword to write a class method.
 // let store = {customers: [], meals: [], deliveries: [], employers: []}
 
 let mealid = 0;
@@ -49,7 +50,15 @@ class Meal {
   }//end constructor
   deliveries(){
   }//deliveries
-  byPrice(){
-    return store.meals.
+  static byPrice(){
+    return store.meals.sort( function(a,b){
+      if (a.price > b.price) {
+        return -1;
+      }
+      if (a.price < b.price) {
+        return 1;
+      }
+      return 0;
+    })//sort
   }
 }//end class
