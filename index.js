@@ -2,6 +2,19 @@ let store = {customers: [], meals: [], deliveries: [], employers: []}
 
 let customerId = 0;
 
+
+// Customer class:
+//
+// new Customer() — initialized with both name,
+//   and an instance of an employer;
+//   returns a JavaScript object that has attributes of id, employerId, and name
+// meals() - returns all of the meals that a customer has had delivered
+// deliveries() — returns all of the deliveries that customer has received
+// totalSpent() - returns the total amount that the customer has spent,
+  // as a function of the cost of the meals he has had delivered
+
+
+
 class Customer {
   constructor(name){
     this.name = name;
@@ -67,12 +80,23 @@ class Meal {
   }
 }//end class
 
+
+// Delivery class:
+
+// new Delivery() — initialized with meal and customer;
+// returns an object that has attributes of mealId, customerId, and id
+// meal() - returns the meal associated with the delivery
+// customer() - returns the customer associated with the delivery
+
 let deliveryId = 0;
 class Delivery {
-  constructor(){
-    // this.mealId = meal.id;
-    // this.customerId = customer.id;
+  constructor(meal,customer){
+    if(meal){    this.mealId = meal.id;}
+    if(customer){    this.customerId = customer.id;}
+
     this.id = ++deliveryId;
     store.deliveries.push(this);
   }
-}
+  meal(){return store.meals.find( meal => meal.id== this.mealId )}//delivery.meal
+  customer(){return store.customers.find( customer => customer.id== this.customerId )}//delivery.meal
+}//delivery
