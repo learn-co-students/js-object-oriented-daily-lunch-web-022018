@@ -10,12 +10,16 @@ class Customer {
     store.customers.push(this);
   }
 
-  // meals(){
-  //   return store.meals.filter(meal => customerId === this.id);
-  // }
+  deliveries(){
+    return store.deliveries.filter(delivery => delivery.customerId === this.id);
+  }
+
+  meals(){
+    return store.meals.filter(meal => meal.customerId === this.id);
+  }
 
   totalSpent(){
-    return this.meals().map(meal => meal.price);
+    return this.meals().reduce(meal => meal.price);
   }
 }
 

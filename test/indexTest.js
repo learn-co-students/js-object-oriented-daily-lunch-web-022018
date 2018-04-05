@@ -228,6 +228,7 @@ describe('relating a delivery to a meal and a customer', function() {
 
   describe('customers', function() {
     it('has a deliveries', function() {
+      debugger
       expect(customer.deliveries()).to.include(firstDelivery);
     });
 
