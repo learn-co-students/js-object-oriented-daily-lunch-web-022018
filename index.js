@@ -62,3 +62,13 @@ class Meal {
     })//sort
   }
 }//end class
+
+let deliveryId = 0;
+class Delivery {
+  constructor(){
+    // this.mealId = meal.id;
+    // this.customerId = customer.id;
+    this.id = ++deliveryId;
+    store.deliveries.push(this);
+  }
+}
