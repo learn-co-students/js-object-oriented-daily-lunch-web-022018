@@ -47,7 +47,6 @@ class Meal{
 	}
 
 
-	
 	deliveries(){
 		return store.deliveries.filter(delivery => {
 			return delivery.mealId === this.id
@@ -67,7 +66,7 @@ class Meal{
 		return store.meals.sort(function(meal1, meal2){return meal2.price - meal1.price})
 	}
 
-	
+
 }
 
 class Delivery{
@@ -87,7 +86,7 @@ class Delivery{
 		return store.customers.find(customer => customer.id == this.customerId)
 	}
 
-	
+
 }
 
 class Employer{
@@ -106,15 +105,12 @@ class Employer{
 	}
 
 	deliveries(){
-		let allDeliveries = this.employees().map(employee => {
-	      return employee.deliveries();
-	    });
-	    let merged = [].concat.apply([], allDeliveries);
-	    return merged;
+		return store.deliveries.filter(delivery => {
+			return delivery.customer().employerId === this.id
+		})
 	}
 
 	meals(){
-
 	    let uniqueMeals = [...new Set(this.allMeals())];
 	    return uniqueMeals;
 	}
@@ -135,11 +131,7 @@ class Employer{
 			counts[meal.id]++
 
 		}
-		console.log(counts)
 		return counts
 	}
-
-
-
 
 }
