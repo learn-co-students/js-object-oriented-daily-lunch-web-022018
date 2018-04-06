@@ -99,12 +99,23 @@ class Employer {
   }
 
   meals() {
-    return store.meals.filter(meal => {
-      return meal.customers(customer => {
-        if (!customer.employerId) {
-        return customer.employerId === this.id
-        }
-      })
+    return [...new Set(this.allMeals())]
+  }
+
+  allMeals() {
+    return this.deliveries().map(delivery => {
+      return delivery.meal()
     })
+  }
+
+  mealTotals() {
+    let count = {}
+    for (let meal of this.allMeals()){
+      if (!(meal.id in count)){
+        count[meal.id] = 0
+      }
+      count[meal.id]++
+    }
+    return count
   }
 }
